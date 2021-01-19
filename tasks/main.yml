@@ -1,0 +1,16 @@
+---
+- name: applying params for host system
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_file: "{{ sysctl_file }}"
+  loop: "{{ sysctl_default_host_params | combine(sysctl_params) | dict2items }}"
+  when: ansible_virtualization_type != 'lxc'
+
+- name: applying params for lxc container
+  sysctl:
+    name: "{{ item.key }}"
+    value: "{{ item.value }}"
+    sysctl_file: "{{ sysctl_file }}"
+  loop: "{{ sysctl_default_lxc_params | combine(sysctl_params) | dict2items }}"
+  when: ansible_virtualization_type == 'lxc'

@@ -1,0 +1,30 @@
+---
+sysctl_file: /etc/sysctl.d/999-custom.conf
+
+sysctl_default_common_params: &common_params
+  net.ipv4.conf.all.accept_redirects: 0
+  net.ipv4.conf.all.accept_source_route: 0
+  net.ipv4.conf.all.rp_filter: 1
+  net.ipv4.conf.all.secure_redirects: 0
+  net.ipv4.conf.all.send_redirects: 0
+  net.ipv4.conf.default.rp_filter: 1
+  net.ipv4.ip_local_port_range: 10240 65535
+  net.ipv4.tcp_sack: 1
+  net.ipv4.tcp_syncookies: 1
+  net.ipv4.tcp_timestamps: 1
+  net.ipv4.tcp_tw_reuse: 1
+  net.ipv4.tcp_window_scaling: 1
+  net.ipv6.conf.all.accept_redirects: 0
+  net.ipv6.conf.all.accept_source_route: 0
+
+sysctl_default_host_params:
+  <<: *common_params
+  kernel.dmesg_restrict: 1
+  net.netfilter.nf_conntrack_max: 524288
+  net.nf_conntrack_max: 524288
+  vm.swappiness: 1
+
+sysctl_default_lxc_params:
+  <<: *common_params
+
+sysctl_params: {}
