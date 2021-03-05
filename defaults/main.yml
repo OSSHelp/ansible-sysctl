@@ -16,6 +16,12 @@ sysctl_default_common_params: &common_params
   net.ipv4.tcp_window_scaling: 1
   net.ipv6.conf.all.accept_redirects: 0
   net.ipv6.conf.all.accept_source_route: 0
+  net.ipv4.icmp_echo_ignore_broadcasts: 1
+  net.ipv4.tcp_synack_retries: 2
+  net.ipv4.tcp_syn_retries: 2
+  net.ipv4.tcp_keepalive_time: 300
+  net.ipv4.tcp_keepalive_probes: 5
+  net.ipv4.tcp_keepalive_intvl: 15
 
 sysctl_default_host_params:
   <<: *common_params
@@ -23,6 +29,8 @@ sysctl_default_host_params:
   net.netfilter.nf_conntrack_max: 524288
   net.nf_conntrack_max: 524288
   vm.swappiness: 1
+  net.ipv4.tcp_tw_recycle: 0
+  net.core.somaxconn: 4096
 
 sysctl_default_lxc_params:
   <<: *common_params

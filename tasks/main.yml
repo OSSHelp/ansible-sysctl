@@ -1,4 +1,9 @@
 ---
+- name: gather required facts
+  setup:
+    gather_subset: [virtual]
+  when: ansible_virtualization_type is not defined
+
 - name: applying params for host system
   sysctl:
     name: "{{ item.key }}"
