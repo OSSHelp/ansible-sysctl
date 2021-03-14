@@ -29,7 +29,6 @@ sysctl_default_host_params:
   net.netfilter.nf_conntrack_max: 524288
   net.nf_conntrack_max: 524288
   vm.swappiness: 1
-  net.ipv4.tcp_tw_recycle: 0
   net.core.somaxconn: 4096
 
 sysctl_default_lxc_params:
