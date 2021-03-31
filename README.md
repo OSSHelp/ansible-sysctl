@@ -43,6 +43,12 @@ The role has list of default (typical) sysctl parameters in file [defaults/main.
 - `sysctl_default_host_params`. Paras for host system + **sysctl_default_common_params**
 - `sysctl_default_lxc_params`. Paras for lxc container + **sysctl_default_common_params**
 
+## FAQ
+
+### I am getting errors when applying a role
+
+You should check the problematic parameters on the server. If any problematic parameters were removed in the new version of the role, then when applied to the server, the parameters added by the previous version of the role will not be removed. You need to delete it manually. This is a feature of the Ansible [sysctl module](https://docs.ansible.com/ansible/2.8/modules/sysctl_module.html).
+
 ## Useful links
 
 - [Official documentation](https://linux.die.net/man/5/sysctl.conf)
